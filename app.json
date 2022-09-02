@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "doingdev-mobile-app",
+    "slug": "doingdev-mobile-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native';
+
 import { Input } from '../../components/Input';
 import { ButtonComponent } from '../../components/Button';
+import { GithubButton } from '../../components/GithubButton';
+import { GoogleButton } from '../../components/GoogleButton';
 
 import brand from '../../assets/brand.png';
-import { Container, Brand, Title, Wrapper } from './styles';
+import { Container, Brand, Title, Wrapper, Link } from './styles';
 
 export const SignIn = () => {
 
@@ -34,9 +37,12 @@ export const SignIn = () => {
                         setInput={setPassword}
                     />
                     <ButtonComponent
-                        title="Entrar"
+                        title="Acessar conta"
                         onPressFunction={handleSignIn}
                     />
+                    <GithubButton />
+                    <GoogleButton />
+                    <Link>Não tem uma conta? Cadastre-se</Link>
                 </Wrapper>
            </SafeAreaView>
         </Container>

@@ -31,5 +31,11 @@ export const Title = styled.Text`
 export const Wrapper = styled.View`
     justify-content: center;
     align-items: center;
-    margin-top: 70%;
+    margin-top: 60%;
+`;
+
+export const Link = styled.Text`
+    font-size: 16px;
+    color: #fff;
+    margin-top: 16px;
 `;

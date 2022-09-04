@@ -8,7 +8,7 @@ export const GoogleButton = ({ onPressFunction, title }) => {
             onPress={() => onPressFunction()}
         >
             <Icon
-                name='logo-github'
+                name='logo-google'
                 size={30}
                 color='#121212'
             />

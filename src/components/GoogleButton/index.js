@@ -2,7 +2,7 @@ import { GoogleButtonComponent, TextButton } from './styles';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export const GoogleButton = ({ onPressFunction }) => {
+export const GoogleButton = ({ onPressFunction, title }) => {
     return (
         <GoogleButtonComponent
             onPress={() => onPressFunction()}
@@ -12,7 +12,7 @@ export const GoogleButton = ({ onPressFunction }) => {
                 size={30}
                 color='#121212'
             />
-            <TextButton>Conectar-se com o Google</TextButton>
+            <TextButton>{title}</TextButton>
         </GoogleButtonComponent>
     )
 }

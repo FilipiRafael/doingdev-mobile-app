@@ -9,22 +9,22 @@ import { GoogleButton } from '../../components/GoogleButton';
 import brand from '../../assets/brand.png';
 import { Container, Brand, Title, Wrapper, Link, LinkButton, Span } from './styles';
 
-export const SignIn = ({ navigation }) => {
+export const SignUp = ({ navigation }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSignIn = async () => {
+    const handleSignUp = async () => {
         console.log(`Email: ${email}`);
         console.log(`Password: ${password}`);
     }
 
     return (
         <Container>
-           <SafeAreaView>
+            <SafeAreaView>
                 <Brand source={brand} />
                 <Wrapper>
-                    <Title>Faça Login</Title>
+                    <Title>Crie Sua Conta</Title>
                     <Input
                         placeholder='E-mail'
                         type='email'
@@ -37,23 +37,23 @@ export const SignIn = ({ navigation }) => {
                         setInput={setPassword}
                     />
                     <ButtonComponent
-                        title="Acessar conta"
-                        onPressFunction={handleSignIn}
+                        title="Criar Conta"
+                        onPressFunction={handleSignUp}
                     />
                     <GithubButton
-                        title="Conectar-se com o Github"
+                        title="Registrar-se com o Github"
                     />
                     <GoogleButton
-                        title="Conectar-se com o Google"
+                        title="Registrar-se com o Google"
                     />
                     <LinkButton
-                        onPress={() => navigation.navigate('SignUp')}
+                        onPress={() => navigation.navigate('SignIn')}
                     >
-                        <Span>Não tem uma conta?</Span>
-                        <Link>Cadastre-se</Link>
+                        <Span>Já tem uma conta?</Span>
+                        <Link>Faça Login</Link>
                     </LinkButton>
                 </Wrapper>
-           </SafeAreaView>
+            </SafeAreaView>
         </Container>
     );
 }

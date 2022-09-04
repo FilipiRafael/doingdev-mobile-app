@@ -2,7 +2,7 @@ import { GithubButtonComponent, TextButton } from './styles';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export const GithubButton = ({ onPressFunction }) => {
+export const GithubButton = ({ onPressFunction, title }) => {
     return (
         <GithubButtonComponent
             onPress={() => onPressFunction()}
@@ -12,7 +12,7 @@ export const GithubButton = ({ onPressFunction }) => {
                 size={30}
                 color='#f1f1f1'
             />
-            <TextButton>Conectar-se com o Github</TextButton>
+            <TextButton>{title}</TextButton>
         </GithubButtonComponent>
     )
 }

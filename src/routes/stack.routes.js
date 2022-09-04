@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SignIn } from '../screens/SignIn';
-import { Home } from '../screens/Home';
+import { SignUp } from '../screens/SignUp';
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
@@ -17,8 +17,8 @@ export function StackRoutes() {
                 component={SignIn}
             />
             <Screen
-                name="Home"
-                component={Home}
+                name="SignUp"
+                component={SignUp}
             />
         </Navigator>
     )

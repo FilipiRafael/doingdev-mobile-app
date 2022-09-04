@@ -7,9 +7,9 @@ import { GithubButton } from '../../components/GithubButton';
 import { GoogleButton } from '../../components/GoogleButton';
 
 import brand from '../../assets/brand.png';
-import { Container, Brand, Title, Wrapper, Link } from './styles';
+import { Container, Brand, Title, Wrapper, Link, LinkButton, Span } from './styles';
 
-export const SignIn = () => {
+export const SignIn = ({ navigation }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -42,7 +42,12 @@ export const SignIn = () => {
                     />
                     <GithubButton />
                     <GoogleButton />
-                    <Link>Não tem uma conta? Cadastre-se</Link>
+                    <LinkButton
+                        onPress={() => navigation.navigate('Home')}
+                    >
+                        <Span>Não tem uma conta?</Span>
+                        <Link>Cadastre-se</Link>
+                    </LinkButton>
                 </Wrapper>
            </SafeAreaView>
         </Container>

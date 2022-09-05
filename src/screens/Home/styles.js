@@ -50,3 +50,15 @@ export const TaskDescription = styled.Text`
     margin-left: 4px;
     font-size: 16px;
 `;
+
+export const AddButton = styled.Pressable`
+    width: 64px;
+    height: 64px;
+    background-color: #5770F7;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    justify-content: center;
+    align-items: center;
+`;

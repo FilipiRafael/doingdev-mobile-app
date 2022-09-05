@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import Checkbox from 'expo-checkbox';
-import { Container, Girl, TasksCard, GreetingText, RowTask, TaskDescription } from './styles';
+import { Container, Girl, TasksCard, GreetingText, RowTask, TaskDescription, AddButton } from './styles';
 import girl from '../../assets/girl.png';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export const Home = () => {
 
@@ -63,6 +64,13 @@ export const Home = () => {
                     </RowTask>
                 ))}
             </TasksCard>
+            <AddButton>
+                <Icon
+                    name="add-outline"
+                    size={30}
+                    color='#fff'
+                />
+            </AddButton>
         </Container>
     );
 }

@@ -1,9 +1,9 @@
-import { SafeAreaView, Text } from 'react-native';
+import { Container } from './styles';
 
 export const Home = () => {
     return (
-        <SafeAreaView>
-            <Text>Hello, world!</Text>
-        </SafeAreaView>
+        <Container>
+            
+        </Container>
     );
 }

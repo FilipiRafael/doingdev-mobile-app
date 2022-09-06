@@ -61,4 +61,5 @@ export const AddButton = styled.Pressable`
     bottom: 20px;
     justify-content: center;
     align-items: center;
+    padding: 0;
 `;

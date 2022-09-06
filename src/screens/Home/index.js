@@ -4,10 +4,12 @@ import Checkbox from 'expo-checkbox';
 import { Container, Girl, TasksCard, GreetingText, RowTask, TaskDescription, AddButton } from './styles';
 import girl from '../../assets/girl.png';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { InputNewTask } from '../../components/InputNewTask';
 
 export const Home = () => {
 
     const [taskList, setTaskList] = useState([]);
+    const [isNewTask, setIsNewTask] = useState(false);
 
     const taskListAPI = [
         {
@@ -34,6 +36,21 @@ export const Home = () => {
         setTaskList(newArrayTasks);
     }
 
+    const handleNewTask = () => {
+        setIsNewTask(true);
+
+        // Set a new task and to task list
+        // const newArrayTasks = [...taskList];
+        // newArrayTasks.push({
+        //     description: '',
+        //     done: false
+        // })
+
+        // setTasksList()
+
+        // setIsNewTask(false);
+    }
+
     useEffect(() => {
         setTaskList(
             [...taskListAPI]
@@ -45,6 +62,7 @@ export const Home = () => {
             <Girl source={girl} />
             <GreetingText>What's up, Filipi?</GreetingText>
             <TasksCard>
+                {isNewTask && <InputNewTask />}
                 {taskList?.map((task, index) => (
                     <RowTask
                         key={index}
@@ -64,7 +82,9 @@ export const Home = () => {
                     </RowTask>
                 ))}
             </TasksCard>
-            <AddButton>
+            <AddButton
+                onPress={handleNewTask}
+            >
                 <Icon
                     name="add-outline"
                     size={30}

@@ -13,18 +13,18 @@ export const Home = () => {
     const [inputDescription, setInputDescription] = useState('');
 
     const taskListAPI = [
-        {
-            description: 'Go to Cofee',
-            done: false,
-        },
-        {
-            description: 'Buy movie tickets for Friday',
-            done: false,
-        },
-        {
-            description: 'Make a React Native tutorial',
-            done: true,
-        },
+        // {
+        //     description: 'Go to Cofee',
+        //     done: false,
+        // },
+        // {
+        //     description: 'Buy movie tickets for Friday',
+        //     done: false,
+        // },
+        // {
+        //     description: 'Make a React Native tutorial',
+        //     done: true,
+        // },
     ]
 
     const updateTaskStatus = (index) => {

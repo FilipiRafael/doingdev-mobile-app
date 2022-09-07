@@ -63,3 +63,21 @@ export const AddButton = styled.Pressable`
     align-items: center;
     padding: 0;
 `;
+
+export const WrapperNewTaskInput = styled.View`
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+`;
+
+export const AddTaskButton = styled.Pressable`
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    border-radius: 5px;
+    margin-left: 8px;
+    border-width: 2px;
+    border-color: #7C7C8A;
+    justify-content: center;
+    align-items: center;
+`;

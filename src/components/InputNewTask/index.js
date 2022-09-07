@@ -1,11 +1,13 @@
 import { Input } from './styles';
 
-export const InputNewTask = ({ handleKeyPress }) => {
+export const InputNewTask = ({ value, setText }) => {
     return (
         <Input
             keyboardType="text"
-            autofocus
+            autoFocus={true}
             placeholder="Digite a nova tarefa..."
+            value={value}
+            onChangeText={(e) => setText(e)}
         />
     )
 }

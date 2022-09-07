@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Alert } from 'react-native';
 import Checkbox from 'expo-checkbox';
-import { Container, Girl, TasksCard, GreetingText, RowTask, TaskDescription, AddButton } from './styles';
+import { Container, Girl, TasksCard, GreetingText, RowTask, TaskDescription, AddButton, AddTaskButton, WrapperNewTaskInput } from './styles';
 import girl from '../../assets/girl.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { InputNewTask } from '../../components/InputNewTask';
@@ -10,6 +10,7 @@ export const Home = () => {
 
     const [taskList, setTaskList] = useState([]);
     const [isNewTask, setIsNewTask] = useState(false);
+    const [inputDescription, setInputDescription] = useState('');
 
     const taskListAPI = [
         {
@@ -36,19 +37,22 @@ export const Home = () => {
         setTaskList(newArrayTasks);
     }
 
-    const handleNewTask = () => {
-        setIsNewTask(true);
+    const handleAddNewTask = (description) => {
 
-        // Set a new task and to task list
-        // const newArrayTasks = [...taskList];
-        // newArrayTasks.push({
-        //     description: '',
-        //     done: false
-        // })
+        if (description) {
+            const newArrayTasks = [...taskList];
+            newArrayTasks.unshift({
+                description: description,
+                done: false
+            });
+    
+            setTaskList(newArrayTasks);
+            setIsNewTask(false);
+            setInputDescription('');
+        } else {
+            Alert.alert('Nova Tarefa', 'Adicione uma descrição a tarefa.')
+        }
 
-        // setTasksList()
-
-        // setIsNewTask(false);
     }
 
     useEffect(() => {
@@ -62,7 +66,23 @@ export const Home = () => {
             <Girl source={girl} />
             <GreetingText>What's up, Filipi?</GreetingText>
             <TasksCard>
-                {isNewTask && <InputNewTask />}
+                {isNewTask && (
+                    <WrapperNewTaskInput>
+                        <InputNewTask
+                            value={inputDescription}
+                            setText={setInputDescription}
+                        />
+                        <AddTaskButton
+                            onPress={() => handleAddNewTask(inputDescription)}
+                        >
+                            <Icon
+                                name='checkmark-done-outline'
+                                size={20}
+                                color='#FBA94C'
+                            />
+                        </AddTaskButton>
+                    </WrapperNewTaskInput>
+                )}
                 {taskList?.map((task, index) => (
                     <RowTask
                         key={index}
@@ -83,7 +103,7 @@ export const Home = () => {
                 ))}
             </TasksCard>
             <AddButton
-                onPress={handleNewTask}
+                onPress={() => setIsNewTask(true)}
             >
                 <Icon
                     name="add-outline"

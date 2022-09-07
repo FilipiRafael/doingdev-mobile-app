@@ -100,7 +100,7 @@ export const Home = () => {
                                     console.info(taskList);
                                 }}
                             />
-                            <TaskDescription>
+                            <TaskDescription done={task.done}>
                                 {task.description}
                             </TaskDescription>
                         </RowTask>

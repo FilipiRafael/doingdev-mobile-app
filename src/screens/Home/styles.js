@@ -46,9 +46,11 @@ export const RowTask = styled.View`
 `;
 
 export const TaskDescription = styled.Text`
-    color: #f5f5f5;
+    color: ${props => props.done ? '#7C7C8A' : '#f5f5f5'};
     margin-left: 4px;
     font-size: 16px;
+    text-decoration: ${props => props.done ? 'line-through' : 'none'};
+    text-decoration-color: #7C7C8A;
 `;
 
 export const AddButton = styled.Pressable`

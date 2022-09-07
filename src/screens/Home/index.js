@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Alert } from 'react-native';
+import { StyleSheet, Alert, ScrollView } from 'react-native';
 import Checkbox from 'expo-checkbox';
 import { Container, Girl, TasksCard, GreetingText, RowTask, TaskDescription, AddButton, AddTaskButton, WrapperNewTaskInput } from './styles';
 import girl from '../../assets/girl.png';
@@ -83,24 +83,29 @@ export const Home = () => {
                         </AddTaskButton>
                     </WrapperNewTaskInput>
                 )}
-                {taskList?.map((task, index) => (
-                    <RowTask
-                        key={index}
-                    >
-                        <Checkbox
-                            color={task.done ? '#5770F7' : '#7C7C8A'}
-                            style={styles.checkbox}
-                            value={task.done}
-                            onValueChange={() => {
-                                updateTaskStatus(index);
-                                console.info(taskList);
-                            }}
-                        />
-                        <TaskDescription>
-                            {task.description}
-                        </TaskDescription>
-                    </RowTask>
-                ))}
+                <ScrollView
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
+                >
+                    {taskList?.map((task, index) => (
+                        <RowTask
+                            key={index}
+                        >
+                            <Checkbox
+                                color={task.done ? '#5770F7' : '#7C7C8A'}
+                                style={styles.checkbox}
+                                value={task.done}
+                                onValueChange={() => {
+                                    updateTaskStatus(index);
+                                    console.info(taskList);
+                                }}
+                            />
+                            <TaskDescription>
+                                {task.description}
+                            </TaskDescription>
+                        </RowTask>
+                    ))}
+                </ScrollView>
             </TasksCard>
             <AddButton
                 onPress={() => setIsNewTask(true)}

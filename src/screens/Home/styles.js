@@ -83,3 +83,16 @@ export const AddTaskButton = styled.Pressable`
     justify-content: center;
     align-items: center;
 `;
+
+export const WrapperTaskListEmpty = styled.View`
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 18px 0;
+`;
+
+export const TextEmptyList = styled.Text`
+    color: #7C7C8A;
+    font-size: 16px;
+    margin-top: 10px;
+`;

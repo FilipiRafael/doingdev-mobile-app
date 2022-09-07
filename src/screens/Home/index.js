@@ -1,7 +1,19 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, Alert, ScrollView } from 'react-native';
 import Checkbox from 'expo-checkbox';
-import { Container, Girl, TasksCard, GreetingText, RowTask, TaskDescription, AddButton, AddTaskButton, WrapperNewTaskInput } from './styles';
+import { 
+    Container,
+    Girl,
+    TasksCard,
+    GreetingText,
+    RowTask,
+    TaskDescription,
+    AddButton,
+    AddTaskButton,
+    WrapperNewTaskInput,
+    WrapperTaskListEmpty,
+    TextEmptyList
+} from './styles';
 import girl from '../../assets/girl.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { InputNewTask } from '../../components/InputNewTask';
@@ -13,18 +25,18 @@ export const Home = () => {
     const [inputDescription, setInputDescription] = useState('');
 
     const taskListAPI = [
-        // {
-        //     description: 'Go to Cofee',
-        //     done: false,
-        // },
-        // {
-        //     description: 'Buy movie tickets for Friday',
-        //     done: false,
-        // },
-        // {
-        //     description: 'Make a React Native tutorial',
-        //     done: true,
-        // },
+        {
+            description: 'Go to Cofee',
+            done: false,
+        },
+        {
+            description: 'Buy movie tickets for Friday',
+            done: false,
+        },
+        {
+            description: 'Make a React Native tutorial',
+            done: true,
+        },
     ]
 
     const updateTaskStatus = (index) => {
@@ -82,6 +94,18 @@ export const Home = () => {
                             />
                         </AddTaskButton>
                     </WrapperNewTaskInput>
+                )}
+                {!isNewTask && taskList.length === 0 && (
+                    <WrapperTaskListEmpty>
+                        <Icon
+                            name='list-outline'
+                            size={80}
+                            color='#7C7C8A'
+                        />
+                        <TextEmptyList>
+                            Você ainda não tem tarefas registradas.
+                        </TextEmptyList>
+                    </WrapperTaskListEmpty>
                 )}
                 <ScrollView
                     showsHorizontalScrollIndicator={false}

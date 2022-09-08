@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, Alert } from 'react-native';
 
 import { Input } from '../../components/Input';
 import { ButtonComponent } from '../../components/Button';
-import { GithubButton } from '../../components/GithubButton';
-import { GoogleButton } from '../../components/GoogleButton';
 
 import brand from '../../assets/brand.png';
 import { Container, Brand, Title, Wrapper, Link, LinkButton, Span } from './styles';
+
+import { supabase } from '../../services/supabase';
 
 export const SignUp = ({ navigation }) => {
 
@@ -15,8 +15,17 @@ export const SignUp = ({ navigation }) => {
     const [password, setPassword] = useState('');
 
     const handleSignUp = async () => {
-        console.log(`Email: ${email}`);
-        console.log(`Password: ${password}`);
+        if (email === '' || password === '') {
+            Alert.alert('Criar Conta', 'Preencha os campos e-mail e senha');
+            return;
+        }
+
+        const { error } = await supabase.auth.signUp({
+            email: email,
+            password: password
+        });
+
+        if (error) Alert.alert('Erro', error.message);
     }
 
     return (
@@ -39,12 +48,6 @@ export const SignUp = ({ navigation }) => {
                     <ButtonComponent
                         title="Criar Conta"
                         onPressFunction={handleSignUp}
-                    />
-                    <GithubButton
-                        title="Registrar-se com o Github"
-                    />
-                    <GoogleButton
-                        title="Registrar-se com o Google"
                     />
                     <LinkButton
                         onPress={() => navigation.navigate('SignIn')}

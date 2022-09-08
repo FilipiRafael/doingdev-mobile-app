@@ -16,7 +16,7 @@ export const Brand = styled.Image`
     height: 100px;
     margin: auto;
     position: absolute;
-    top: 20px;
+    top: 50px;
     left: 0;
     right: 0;
 `;
@@ -31,7 +31,7 @@ export const Title = styled.Text`
 export const Wrapper = styled.View`
     justify-content: center;
     align-items: center;
-    margin-top: 130px;
+    flex: 1;
 `;
 
 export const LinkButton = styled.Pressable`

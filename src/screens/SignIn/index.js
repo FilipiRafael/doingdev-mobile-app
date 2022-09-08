@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, Alert } from 'react-native';
 
 import { Input } from '../../components/Input';
 import { ButtonComponent } from '../../components/Button';
-import { GithubButton } from '../../components/GithubButton';
-import { GoogleButton } from '../../components/GoogleButton';
 import { supabase } from '../../services/supabase';
 
 import brand from '../../assets/brand.png';
@@ -16,8 +14,17 @@ export const SignIn = ({ navigation }) => {
     const [password, setPassword] = useState('');
 
     const handleSignIn = async () => {
-        console.log(`Email: ${email}`);
-        console.log(`Password: ${password}`);
+        if (email === '' || password === '') {
+            Alert.alert('Logar', 'Preencha os campos de e-mail e senha');
+            return;
+        }
+
+        const { error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+        if (error) Alert.alert('Erro', error.message);
     }
 
     return (
@@ -40,12 +47,6 @@ export const SignIn = ({ navigation }) => {
                     <ButtonComponent
                         title="Acessar conta"
                         onPressFunction={handleSignIn}
-                    />
-                    <GithubButton
-                        title="Conectar-se com o Github"
-                    />
-                    <GoogleButton
-                        title="Conectar-se com o Google"
                     />
                     <LinkButton
                         onPress={() => navigation.navigate('SignUp')}

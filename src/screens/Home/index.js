@@ -12,11 +12,13 @@ import {
     AddTaskButton,
     WrapperNewTaskInput,
     WrapperTaskListEmpty,
-    TextEmptyList
+    TextEmptyList,
+    ViewStyled
 } from './styles';
 import girl from '../../assets/girl.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { InputNewTask } from '../../components/InputNewTask';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 export const Home = () => {
 
@@ -67,6 +69,26 @@ export const Home = () => {
 
     }
 
+    const handleDeteleTask = (index) => {
+        const newArrayTasks = [...taskList];
+        newArrayTasks.splice(index, 1);
+        setTaskList(newArrayTasks);
+    }
+
+    const showTrashSwipeable = ({ index }) => {
+        return (
+            <ViewStyled
+                onPress={() => handleDeteleTask(index)}
+            >
+                <Icon
+                    name='trash-outline'
+                    size={30}
+                    color='#f1f1f1'
+                />
+            </ViewStyled>
+        )
+    }
+
     useEffect(() => {
         setTaskList(
             [...taskListAPI]
@@ -103,7 +125,7 @@ export const Home = () => {
                             color='#7C7C8A'
                         />
                         <TextEmptyList>
-                            Você ainda não tem tarefas registradas.
+                            Você não tem tarefas registradas.
                         </TextEmptyList>
                     </WrapperTaskListEmpty>
                 )}
@@ -112,22 +134,24 @@ export const Home = () => {
                     showsVerticalScrollIndicator={false}
                 >
                     {taskList?.map((task, index) => (
-                        <RowTask
+                        <Swipeable
                             key={index}
+                            renderRightActions={() => showTrashSwipeable(index)}
                         >
-                            <Checkbox
-                                color={task.done ? '#5770F7' : '#7C7C8A'}
-                                style={styles.checkbox}
-                                value={task.done}
-                                onValueChange={() => {
-                                    updateTaskStatus(index);
-                                    console.info(taskList);
-                                }}
-                            />
-                            <TaskDescription done={task.done}>
-                                {task.description}
-                            </TaskDescription>
-                        </RowTask>
+                            <RowTask>
+                                <Checkbox
+                                    color={task.done ? '#5770F7' : '#7C7C8A'}
+                                    style={styles.checkbox}
+                                    value={task.done}
+                                    onValueChange={() => {
+                                        updateTaskStatus(index);
+                                    }}
+                                />
+                                <TaskDescription done={task.done}>
+                                    {task.description}
+                                </TaskDescription>
+                            </RowTask>
+                        </Swipeable>
                     ))}
                 </ScrollView>
             </TasksCard>

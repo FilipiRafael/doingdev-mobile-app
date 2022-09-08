@@ -39,10 +39,12 @@ export const GreetingText = styled.Text`
 `;
 
 export const RowTask = styled.View`
-    width: 100%;
+    width: ${width - 40}px;
+    height: 50px;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    background-color: #121212;
 `;
 
 export const TaskDescription = styled.Text`
@@ -95,4 +97,14 @@ export const TextEmptyList = styled.Text`
     color: #7C7C8A;
     font-size: 16px;
     margin-top: 10px;
+`;
+
+export const ViewStyled = styled.TouchableOpacity`
+    justify-content: center;
+    align-items: center;
+    background-color: #ed4755;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0 8px;
+    margin: 2px 0;
 `;

@@ -5,6 +5,7 @@ import { Input } from '../../components/Input';
 import { ButtonComponent } from '../../components/Button';
 import { GithubButton } from '../../components/GithubButton';
 import { GoogleButton } from '../../components/GoogleButton';
+import { supabase } from '../../services/supabase';
 
 import brand from '../../assets/brand.png';
 import { Container, Brand, Title, Wrapper, Link, LinkButton, Span } from './styles';

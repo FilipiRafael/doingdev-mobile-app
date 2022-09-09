@@ -27,44 +27,51 @@ export const Home = () => {
     const [isNewTask, setIsNewTask] = useState(false);
     const [inputDescription, setInputDescription] = useState('');
 
-    const updateTaskStatus = (index) => {
-        const newArrayTasks = [...taskList];
+    const updateTaskStatus = async (id, index) => {
 
-        newArrayTasks[index].done === true ?
-        newArrayTasks[index].done = false :
-        newArrayTasks[index].done = true;
+        const done = taskList[index].done;
 
-        setTaskList(newArrayTasks);
+        const { error } = await supabase
+        .from('tasklist')
+        .update({ done: !done })
+        .match({ id: id })
+
+        error ? console.error(error) : console.log('Task Updated');
     }
 
-    const handleAddNewTask = (description) => {
+    const handleAddNewTask = async (description) => {
 
         if (description) {
-            const newArrayTasks = [...taskList];
-            newArrayTasks.unshift({
-                description: description,
-                done: false
+            const { error } = await supabase
+            .from('tasklist')
+            .insert({
+              description: description,
+              done: false  
             });
-    
-            setTaskList(newArrayTasks);
+
             setIsNewTask(false);
             setInputDescription('');
+
+            error ? console.error(error) : console.log('Task added');
         } else {
             Alert.alert('Nova Tarefa', 'Adicione uma descrição a tarefa.')
         }
 
     }
 
-    const handleDeteleTask = (index) => {
-        const newArrayTasks = [...taskList];
-        newArrayTasks.splice(index, 1);
-        setTaskList(newArrayTasks);
+    const handleDeteleTask = async (id) => {
+        const { error } = await supabase
+        .from('tasklist')
+        .delete()
+        .match({ id: id });
+
+        error ? console.error(error) : console.log('Item removed');
     }
 
-    const showTrashSwipeable = ({ index }) => {
+    const showTrashSwipeable = (id) => {
         return (
             <ViewStyled
-                onPress={() => handleDeteleTask(index)}
+                onPress={() => handleDeteleTask(id)}
             >
                 <Icon
                     name='trash-outline'
@@ -91,7 +98,7 @@ export const Home = () => {
 
     useEffect(() => {   
         getTaskList();
-    }, []);
+    }, [taskList]);
 
     return (
         <Container>
@@ -134,7 +141,7 @@ export const Home = () => {
                     {taskList?.map((task, index) => (
                         <Swipeable
                             key={task.id}
-                            renderRightActions={() => showTrashSwipeable(index)}
+                            renderRightActions={() => showTrashSwipeable(task.id)}
                         >
                             <RowTask>
                                 <Checkbox
@@ -142,7 +149,7 @@ export const Home = () => {
                                     style={styles.checkbox}
                                     value={task.done}
                                     onValueChange={() => {
-                                        updateTaskStatus(index);
+                                        updateTaskStatus(task.id, index);
                                     }}
                                 />
                                 <TaskDescription done={task.done}>

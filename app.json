@@ -1,10 +1,18 @@
 {
   "expo": {
-    "name": "doingdev-mobile-app",
+    "name": "DoingDev",
     "slug": "doingdev-mobile-app",
     "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.filipirafael.doingdevapp",
+      "buildNumber": "1.0.0"
+    }
   }
 }

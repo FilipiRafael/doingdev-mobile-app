@@ -13,9 +13,10 @@ Conforme vou adquirindo novas habilidades, irei atualizando o projeto em novas v
 ## 🚀 Tecnologias utilizadas
 - Javascript
 - React Native
-- Firebase (Firestore e Auth)
+- Supabase
 - Github Projects
-- Vercel
+- Expo
+- Styled-Components
 
 ## 🚀 Screenshots
 <img src="./src/assets/screenshot1.png" alt="project screenshot" />
@@ -37,4 +38,4 @@ O projeto tem o objetivo final de ser um todoist mininalista com Lofi Music Play
 
 ## Detalhes do projeto
 
-A ideia do projeto foi para aplicar, práticar e melhorar minhas habilidades técnicas em desenvolvimento mobile com React Native, Firebase e mais tecnologias que envolvendo a concepção, desenvolvimento e entrega do produto.
+A ideia do projeto foi para aplicar, práticar e melhorar minhas habilidades técnicas em desenvolvimento mobile com React Native, Supabase e mais tecnologias que envolvendo a concepção, desenvolvimento e entrega do produto.

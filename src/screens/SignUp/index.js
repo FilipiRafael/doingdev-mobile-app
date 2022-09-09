@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { SafeAreaView, Alert } from 'react-native';
 
 import { Input } from '../../components/Input';
@@ -9,7 +9,11 @@ import { Container, Brand, Title, Wrapper, Link, LinkButton, Span } from './styl
 
 import { supabase } from '../../services/supabase';
 
+import { AuthContext } from '../../contexts/auth';
+
 export const SignUp = ({ navigation }) => {
+
+    const { setIsAuth } = useContext(AuthContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -23,9 +27,10 @@ export const SignUp = ({ navigation }) => {
         const { error } = await supabase.auth.signUp({
             email: email,
             password: password
-        });
+        })
 
         if (error) Alert.alert('Erro', error.message);
+        else setIsAuth(true);
     }
 
     return (

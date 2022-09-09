@@ -12,15 +12,15 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const Girl = styled.Image`
-    width: 250px;
-    height: 180px;
+    width: 280px;
+    height: 200px;
     position: absolute;
-    top: 0px;
+    top: -20px;
 `;
 
 export const TasksCard = styled.View`
     width: ${width}px;
-    height: ${height - 180}px;
+    flex: 0.8;
     background-color: #121212;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -33,9 +33,6 @@ export const GreetingText = styled.Text`
     color: #fff;
     font-size: 36px;
     font-weight: bold;
-    position: absolute;
-    top: 130px;
-    left: 25px;
 `;
 
 export const RowTask = styled.View`
@@ -62,7 +59,7 @@ export const AddButton = styled.Pressable`
     border-radius: 50%;
     position: absolute;
     right: 20px;
-    bottom: 20px;
+    bottom: 110px;
     justify-content: center;
     align-items: center;
     padding: 0;

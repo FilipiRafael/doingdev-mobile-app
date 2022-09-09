@@ -1,42 +1,47 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { SignIn } from '../screens/SignIn';
-import { SignUp } from '../screens/SignUp';
 import { Ionicons } from '@expo/vector-icons';
+import { Home } from '../screens/Home';
+// import { SignIn } from '../screens/SignIn';
 
 const { Screen, Navigator } = createDrawerNavigator();
 
 export function DrawerNavigator() {
+
     return (
         <Navigator
             screenOptions={{
-                headerShown: true
+                headerShown: true,
+                headerStyle: {
+                    backgroundColor: '#121212'
+                },
+                headerTintColor: '#f1f1f1'
             }}
         >
             <Screen
-                name="Logar"
-                component={SignIn}
+                name="Home"
+                component={Home}
                 options={{
-                    drawerLabel: 'Logar Conta',
+                    drawerLabel: 'Home',
                     drawerIcon: () => <Ionicons
-                        name='log-in-outline'
+                        name='home-outline'
                         size={20}
                         color='#121212'
                     />
                 }}
             />
-            <Screen
-                name="Criar Conta"
-                component={SignUp}
-                options={{ 
-                    drawerLabel: 'Criar Conta',
+            {/* <Screen
+                name="Deslogar"
+                component={SignIn}
+                options={{
+                    drawerLabel: 'Sair',
                     drawerIcon: () => <Ionicons
-                        name='newspaper-outline'
+                        name='log-out-outline'
                         size={20}
                         color='#121212'
                     />
-                 }}
-            />
+                }}
+            /> */}
         </Navigator>
     )
 }

@@ -16,3 +16,7 @@ Conforme vou adquirindo novas habilidades, irei atualizando o projeto em novas v
 - Firebase (Firestore e Auth)
 - Github Projects
 - Vercel
+
+## 🚀 Screenshots
+<img src="./src/assets/screenshot1.png" alt="project screenshot" />
+<img src="./src/assets/screenshot2.png" alt="project screenshot" />

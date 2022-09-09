@@ -19,27 +19,13 @@ import girl from '../../assets/girl.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { InputNewTask } from '../../components/InputNewTask';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { supabase } from '../../services/supabase';
 
 export const Home = () => {
 
     const [taskList, setTaskList] = useState([]);
     const [isNewTask, setIsNewTask] = useState(false);
     const [inputDescription, setInputDescription] = useState('');
-
-    const taskListAPI = [
-        {
-            description: 'Go to Cofee',
-            done: false,
-        },
-        {
-            description: 'Buy movie tickets for Friday',
-            done: false,
-        },
-        {
-            description: 'Make a React Native tutorial',
-            done: true,
-        },
-    ]
 
     const updateTaskStatus = (index) => {
         const newArrayTasks = [...taskList];
@@ -89,10 +75,22 @@ export const Home = () => {
         )
     }
 
-    useEffect(() => {
-        setTaskList(
-            [...taskListAPI]
+    const getTaskList = async () => {
+        const { data, error } = await supabase
+        .from('tasklist')
+        .select();
+
+        error && (
+            console.error(error)
         );
+
+        data && (
+            setTaskList(data)
+        );
+    }
+
+    useEffect(() => {   
+        getTaskList();
     }, []);
 
     return (
@@ -135,7 +133,7 @@ export const Home = () => {
                 >
                     {taskList?.map((task, index) => (
                         <Swipeable
-                            key={index}
+                            key={task.id}
                             renderRightActions={() => showTrashSwipeable(index)}
                         >
                             <RowTask>

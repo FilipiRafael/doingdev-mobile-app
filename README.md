@@ -28,7 +28,7 @@ O projeto tem o objetivo final de ser um todoist mininalista com Lofi Music Play
 
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
-| :sparkles: Nome        | **Doing.dev**
+| :sparkles: Nome        | **Doing.dev Mobile**
 | :label: Tecnologias | Javascript, React Native, Styled-Components, Supabase, Expo (tecnologias utilizadas)
 | :rocket: URL         | https://github.com/FilipiRafael/doingdev-mobile-app
 | :fire: Desafio     | https://github.com/FilipiRafael/doingdev-mobile-app
